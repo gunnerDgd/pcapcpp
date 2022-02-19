@@ -5,6 +5,7 @@
 namespace pcapcpp {
 	class device
 	{
+		friend class endpoint;
 	public:
 		typedef pcap_t*					  handle_type   ;
 		typedef network_interface		  interface_type;
