@@ -48,7 +48,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -84,9 +84,10 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\include;$(IncludePath)</IncludePath>
-    <OutDir>C:\Users\MinusOne\Projects\pcapcpp\libs\x64\windows\</OutDir>
+    <IncludePath>C:\Users\ifstu\Projects\pcapcpp\include;C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\include;$(IncludePath)</IncludePath>
+    <OutDir>..\..\..\..\..\libs\x64\windows</OutDir>
     <TargetName>x64_pcapcpp_dev</TargetName>
+    <LibraryPath>C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

@@ -78,8 +78,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\MinusOne\Projects\pcapcpp\libs\x64\windows\;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Include;C:\Users\ifstu\Projects\pcapcpp\include;C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows;C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\MinusOne\Projects\pcapcpp\libs\x64\windows\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
