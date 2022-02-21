@@ -15,7 +15,11 @@ int main()
 	pcapcpp::device					if_device  (if_network, if_device_opmode);
 	pcapcpp::endpoint				if_endpoint(if_device);
 	
-	pcapcpp::raw<>  if_raw_packet;
-					if_endpoint  .capture_once(if_raw_packet);
-	std::cout << if_raw_packet.packet_size() << std::endl;
+	pcapcpp::raw					if_raw_packet;
+
+	while (true)
+	{
+		if_endpoint.capture_once(if_raw_packet);
+		std::cout << if_raw_packet.packet_size() << std::endl;
+	}
 }

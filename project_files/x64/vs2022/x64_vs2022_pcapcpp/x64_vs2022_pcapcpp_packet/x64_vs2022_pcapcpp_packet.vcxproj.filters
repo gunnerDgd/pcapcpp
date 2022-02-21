@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\protocol">
+      <UniqueIdentifier>{7df5bdaa-1a48-4d27-8f21-ff20874e541d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\category.hpp">
@@ -21,8 +24,8 @@
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\raw.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol\ethernet.hpp">
+      <Filter>Header Files\protocol</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

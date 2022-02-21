@@ -19,6 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\filter.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\category.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\arp.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\ethernet.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\endpoint\endpoint.hpp" />
   </ItemGroup>
   <ItemGroup>

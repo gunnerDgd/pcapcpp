@@ -3,17 +3,22 @@
 #include <type_traits>
 
 namespace pcapcpp {
-	template <std::size_t RawSize = 4096, typename RawAllocator = std::allocator<std::uint8_t>>
+	/*
+	* pcapcpp::raw Class
+	* 
+	* - Description
+	*		--> "Raw" Class Stores raw packet data for parsing.
+	*			The pointer which contains 
+	* 
+	*/
 	class raw
 	{
+		template <typename FilterCategory>
+		friend class basic_filter;
 		friend class endpoint;
 	public:
-		typedef			 RawAllocator				allocator_type		    ;
-		static constexpr std::size_t				allocated_size = RawSize;
-
-		typedef			 std::uint8_t*				pointer_type			;
-		typedef			 std::size_t				size_type			    ;
-		typedef			 raw<RawSize, RawAllocator> this_type				;
+		typedef			 std::uint8_t* pointer_type;
+		typedef			 std::size_t   size_type   ;
 
 		raw ();
 		~raw();
@@ -21,11 +26,11 @@ namespace pcapcpp {
 		raw (pointer_type, size_type);
 	
 	public:
-		raw					(this_type&) = delete;
-		this_type& operator=(this_type&) = delete;
+		raw			  (raw&) = delete;
+		raw& operator=(raw&) = delete;
 		
-		raw					(this_type&&);
-		this_type& operator=(this_type&&);
+		raw			  (raw&&);
+		raw& operator=(raw&&);
 		
 	public:
 		size_type packet_size() { return   __M_raw_packet_size		  ; }
@@ -34,45 +39,41 @@ namespace pcapcpp {
 	private:
 		pointer_type   __M_raw_pointer    ;
 		size_type      __M_raw_packet_size;
-		allocator_type __M_raw_allocator  ;
 	};
 }
 
-template <std::size_t RawSize, typename RawAllocator>
-pcapcpp::raw<RawSize, RawAllocator>::raw(pointer_type ptr, size_type size) : __M_raw_pointer    (__M_raw_allocator.allocate(allocated_size)),
-																			 __M_raw_packet_size(size)
+pcapcpp::raw::raw(pointer_type ptr, size_type size)
 {
-	if (!ptr) return;
-	std::memcpy((void*)__M_raw_pointer, ptr, size);
+	if (!ptr)
+		return;
+
+	__M_raw_pointer     = new std::uint8_t[size];
+	__M_raw_packet_size = size;
+	
+	std::memcpy(reinterpret_cast<void*>(__M_raw_pointer), ptr, size);
 }
 
-template <std::size_t RawSize, typename RawAllocator>
-pcapcpp::raw<RawSize, RawAllocator>::raw(this_type&& move) : __M_raw_pointer	(move.__M_raw_pointer)    ,
-															 __M_raw_packet_size(move.__M_raw_packet_size),
-															 __M_raw_allocator  (move.__M_raw_allocator)
+pcapcpp::raw::raw(raw&& move) : __M_raw_pointer	   (move.__M_raw_pointer)   ,
+								__M_raw_packet_size(move.__M_raw_packet_size)
 {
 	move.__M_raw_packet_size = 0;
 	move.__M_raw_pointer     = nullptr;
 }
 
-template <std::size_t RawSize, typename RawAllocator>
-pcapcpp::raw<RawSize, RawAllocator>& pcapcpp::raw<RawSize, RawAllocator>::operator=(this_type&& move)
+pcapcpp::raw& pcapcpp::raw::operator=(raw&& move)
 {
-	__M_raw_pointer     = move.__M_raw_pointer;
-	__M_raw_packet_size = move.__M_raw_packet_size;
-	__M_raw_allocator   = move.__M_raw_allocator;
+	delete[] __M_raw_pointer;
+
+	__M_raw_pointer			 = move.__M_raw_pointer	 ;
+	__M_raw_packet_size		 = move.__M_raw_packet_size;
 
 	move.__M_raw_pointer	 = nullptr;
 	move.__M_raw_packet_size = 0;
 
 	return *this;
 }
-template <std::size_t RawSize, typename RawAllocator>
-pcapcpp::raw<RawSize, RawAllocator>::raw() : __M_raw_pointer(nullptr) {  }
 
-template <std::size_t RawSize, typename RawAllocator>
-pcapcpp::raw<RawSize, RawAllocator>::~raw()
-{
-	if (__M_raw_pointer && __M_raw_packet_size)
-		__M_raw_allocator.deallocate(__M_raw_pointer, allocated_size); 
-}
+pcapcpp::raw::raw() : __M_raw_pointer    (nullptr), 
+					  __M_raw_packet_size(0)      {  }
+
+pcapcpp::raw::~raw()							  { if(__M_raw_pointer) delete[] __M_raw_pointer; }

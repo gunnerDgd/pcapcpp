@@ -13,10 +13,28 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\ethernet">
+      <UniqueIdentifier>{8f0ab073-405c-42b5-9d8b-ef9e12bcabf9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\arp">
+      <UniqueIdentifier>{c4d1a3cd-cba2-4b27-b720-524db5e8d1fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\endpoint\endpoint.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\filter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\category.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\ethernet.hpp">
+      <Filter>Header Files\ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\arp.hpp">
+      <Filter>Header Files\arp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
