@@ -3,7 +3,7 @@
 #include <cstddef>
 
 namespace pcapcpp::protocol {
-	class packet
+	class ethernet
 	{
 	public:
 		typedef std::uint8_t  mac[6];

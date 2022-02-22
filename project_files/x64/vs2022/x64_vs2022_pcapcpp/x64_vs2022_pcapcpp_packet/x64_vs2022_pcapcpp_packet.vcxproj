@@ -20,7 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\category.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol\arp.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol\ethernet.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol\ip.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol\tcp.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\raw.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

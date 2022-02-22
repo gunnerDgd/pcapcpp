@@ -27,9 +27,6 @@
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\filter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\category.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\ethernet.hpp">
       <Filter>Header Files\ethernet</Filter>
     </ClInclude>

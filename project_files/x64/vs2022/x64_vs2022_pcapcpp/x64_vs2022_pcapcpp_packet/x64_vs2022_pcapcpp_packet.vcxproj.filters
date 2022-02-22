@@ -27,5 +27,14 @@
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol\ethernet.hpp">
       <Filter>Header Files\protocol</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol\arp.hpp">
+      <Filter>Header Files\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol\ip.hpp">
+      <Filter>Header Files\protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol\tcp.hpp">
+      <Filter>Header Files\protocol</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

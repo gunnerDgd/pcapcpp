@@ -2,12 +2,11 @@
 #include <pcapcpp/capture/filter.hpp>
 #include <pcapcpp/endpoint/endpoint.hpp>
 
-#include <pcapcpp/capture/category.hpp>
 #include <pcapcpp/packet/category.hpp>
 
 namespace pcapcpp {
 	template <>
-	class basic_filter<category::eth_type>
+	class basic_filter<protocol::eth_type>
 	{
 	public:
 		using					   size_type	   = std::uint16_t;
