@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\capture.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\capture_helper.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\forward.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\parser.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\arp.hpp" />

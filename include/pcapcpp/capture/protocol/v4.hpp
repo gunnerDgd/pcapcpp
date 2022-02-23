@@ -3,8 +3,7 @@
 #include <pcapcpp/packet/protocol/ip.hpp>
 
 namespace pcapcpp {
-	template <>
-	class parser_traits<protocol::ipv4_type>
+	template <> class parser_traits<protocol::ipv4_type>
 	{
 	public:
 		class filter;

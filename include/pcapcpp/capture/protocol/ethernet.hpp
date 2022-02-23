@@ -3,8 +3,7 @@
 #include <pcapcpp/packet/protocol/ethernet.hpp>
 
 namespace pcapcpp {
-	template <>
-	class parser_traits<protocol::ethernet_type>
+	template <> class parser_traits<protocol::ethernet_type>
 	{
 	public:
 		using protocol_category = protocol::ethernet_type;

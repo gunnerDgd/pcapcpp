@@ -11,8 +11,7 @@
  */
 
 namespace pcapcpp {
-	template <>
-	class parser_traits<protocol::arp_type>
+	template <> class parser_traits<protocol::arp_type>
 	{
 	public:
 		class filter;

@@ -48,6 +48,12 @@
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\arp.hpp">
       <Filter>Header Files\arp</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\capture.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\capture_helper.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\source\endpoint\endpoint.cpp">

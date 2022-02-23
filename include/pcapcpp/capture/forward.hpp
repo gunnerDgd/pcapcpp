@@ -1,7 +1,7 @@
 #pragma once
-#include <pcapcpp/capture/protocool/arp.hpp>
-#include <pcapcpp/capture/protocool/ethernet.hpp>
-#include <pcapcpp/capture/protocool/v4.hpp>
+#include <pcapcpp/capture/protocol/arp.hpp>
+#include <pcapcpp/capture/protocol/ethernet.hpp>
+#include <pcapcpp/capture/protocol/v4.hpp>
 
 namespace pcapcpp::parser {
 	using arp	   = basic_parser<protocol::arp_type>	  ;
