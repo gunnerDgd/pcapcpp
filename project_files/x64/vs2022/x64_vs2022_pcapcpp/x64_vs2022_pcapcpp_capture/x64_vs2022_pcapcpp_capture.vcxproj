@@ -21,9 +21,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\forward.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\parser.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\arp.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\ethernet.hpp" />
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\v4.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\arp.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\ethernet.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\v4.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\endpoint\endpoint.hpp" />
   </ItemGroup>
   <ItemGroup>

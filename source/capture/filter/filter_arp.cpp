@@ -1,5 +1,5 @@
 #pragma once
-#include <pcapcpp/capture/protocool/arp.hpp>
+#include <pcapcpp/capture/protocol/arp.hpp>
 
 using namespace pcapcpp;
 using			arp_parser = parser_traits<protocol::arp_type>;

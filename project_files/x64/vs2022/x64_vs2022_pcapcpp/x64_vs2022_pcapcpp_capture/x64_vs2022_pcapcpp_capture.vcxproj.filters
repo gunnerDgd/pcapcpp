@@ -36,17 +36,17 @@
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\parser.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\ethernet.hpp">
-      <Filter>Header Files\ethernet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\arp.hpp">
-      <Filter>Header Files\arp</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\v4.hpp">
-      <Filter>Header Files\ip</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\forward.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\v4.hpp">
+      <Filter>Header Files\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\ethernet.hpp">
+      <Filter>Header Files\ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\arp.hpp">
+      <Filter>Header Files\arp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

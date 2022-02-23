@@ -1,5 +1,5 @@
 #pragma once
-#include <pcapcpp/capture/protocool/ethernet.hpp>
+#include <pcapcpp/capture/protocol/ethernet.hpp>
 
 using namespace pcapcpp;
 using			eth_parser = parser_traits<protocol::ethernet_type>;
