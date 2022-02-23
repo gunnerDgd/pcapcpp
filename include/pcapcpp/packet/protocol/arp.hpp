@@ -1,12 +1,13 @@
 #pragma once
 #include <cstdint>
 
-namespace pcapcpp::protocol {
+namespace pcapcpp::protocol::packet {
 	class arp
 	{
 	public:
 		typedef std::uint8_t mac			 [6];
 		typedef std::uint8_t protocol_address[4];
+		enum class			 operation_code	    { request = 1, reply = 2, malformed = 0 };
 
 		std::uint16_t    hardware_type			, protocol_type			 ; // 4 Byte
 		std::uint8_t     hardware_address_length, protocol_address_length; // 2 Byte

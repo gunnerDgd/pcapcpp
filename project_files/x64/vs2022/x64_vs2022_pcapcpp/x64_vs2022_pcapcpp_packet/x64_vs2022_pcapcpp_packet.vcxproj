@@ -26,6 +26,9 @@
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\protocol\tcp.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\raw.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\source\packet\raw.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

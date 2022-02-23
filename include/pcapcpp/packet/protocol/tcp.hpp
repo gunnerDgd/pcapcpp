@@ -1,7 +1,7 @@
 #pragma once
 #include <cstdint>
 
-namespace pcapcpp::protocol {
+namespace pcapcpp::protocol::packet {
 	class tcp
 	{
 	public:

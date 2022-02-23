@@ -1,34 +1,43 @@
 #pragma once
-#include <pcapcpp/capture/filter.hpp>
-#include <pcapcpp/endpoint/endpoint.hpp>
-
-#include <pcapcpp/packet/category.hpp>
+#include <pcapcpp/capture/parser.hpp>
+#include <pcapcpp/packet/protocol/ethernet.hpp>
 
 namespace pcapcpp {
 	template <>
-	class basic_filter<protocol::eth_type>
+	class parser_traits<protocol::ethernet_type>
 	{
 	public:
-		using					   size_type	   = std::uint16_t;
-		using					   packet_category = filter::static_sized ;
-		using					   packet_type     = 
-		static constexpr size_type packet_size	   = 12;
+		using protocol_category = protocol::ethernet_type;
+		using packet			= protocol::packet::ethernet;
 
+		static constexpr bool notifies_upper_protocol = true;
+		using						   upper_protocol = packet::upper_layer;
+
+	public:
+		class filter;
 		
 	public:
-		template <typename RawType>
-		packet operator|(RawType&&);
+		static packet parse_from(null_filter, raw&, upper_protocol&);
+		static packet parse_from(filter&	, raw&, upper_protocol&);
 	};
-} 
 
-template <typename RawType>
-pcapcpp::basic_filter<pcapcpp::category::eth_type>::packet pcapcpp::basic_filter<pcapcpp::category::eth_type>::operator|(RawType&& raw)
-{
-	if (!raw.__M_raw_pointer)
-		return packet;
+	class parser_traits<protocol::ethernet_type>::filter
+	{
+		friend class parser_traits<protocol::ethernet_type>;
+	public:
+		static constexpr packet::mac		 all	   = { 0xFF, };
+		static constexpr packet::upper_layer all_layer = packet::upper_layer::malformed;
 
-	packet		 eth_packet;
-	std::memcpy(&eth_packet, raw.__M_raw_pointer, packet_size);
+		filter(packet::mac, packet::mac, packet::upper_layer);
+		filter()											 { }
 
-	return eth_packet;
+	private:
+		packet::mac			__M_filter_sender, __M_filter_receiver;
+		packet::upper_layer __M_filter_ulp;
+
+	private:
+		bool match_source	  (packet::mac&);
+		bool match_destination(packet::mac&);
+		bool match_upper_layer(packet::protocol_type);
+	};
 }

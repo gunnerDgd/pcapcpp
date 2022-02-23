@@ -2,15 +2,18 @@
 #include <cstdint>
 #include <type_traits>
 
-namespace pcapcpp::protocol {
+namespace pcapcpp::protocol::packet {
 	class ipv4
 	{
 	public:
-		typedef std::uint8_t address_type[4];
+		typedef std::uint8_t  address_type[4];
+		typedef std::uint16_t protocol_type;
 
 		enum class fragment_flag { not_fragmentated = 1 << 1, fragmentated = 1 << 2 };
-		enum class protocol_type 
+		enum class upper_layer   : protocol_type
 		{
+			malformed = 0xFF,
+
 			icmp = 0x01,
 			igmp = 0x02,
 
@@ -28,7 +31,7 @@ namespace pcapcpp::protocol {
 		std::uint16_t identification;
 
 		std::uint8_t  fragmentation		 : 3;
-		std::uint8_t  fragment_offset	 : 13;
+		std::uint16_t fragment_offset	 : 13;
 
 		std::uint8_t  time_to_live;
 		std::uint8_t  upper_protocol;

@@ -19,12 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\filter.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\forward.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\parser.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\arp.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\ethernet.hpp" />
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocool\v4.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\endpoint\endpoint.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\source\capture\filter\filter_arp.cpp" />
+    <ClCompile Include="..\..\..\..\..\source\capture\filter\filter_ethernet.cpp" />
+    <ClCompile Include="..\..\..\..\..\source\capture\filter\filter_v4.cpp" />
+    <ClCompile Include="..\..\..\..\..\source\capture\parse_arp.cpp" />
+    <ClCompile Include="..\..\..\..\..\source\capture\parse_ethernet.cpp" />
+    <ClCompile Include="..\..\..\..\..\source\capture\parse_v4.cpp" />
     <ClCompile Include="..\..\..\..\..\source\endpoint\endpoint.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
