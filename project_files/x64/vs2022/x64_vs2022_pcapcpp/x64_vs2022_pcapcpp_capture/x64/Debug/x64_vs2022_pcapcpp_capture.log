@@ -1,9 +1,0 @@
-﻿  filter_arp.cpp
-  filter_ethernet.cpp
-  filter_v4.cpp
-  parse_arp.cpp
-  parse_ethernet.cpp
-  parse_v4.cpp
-  endpoint.cpp
-  Generating Code...
-  x64_vs2022_pcapcpp_capture.vcxproj -> C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows\x64_pcapcpp_ep.lib

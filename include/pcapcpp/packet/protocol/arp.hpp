@@ -18,5 +18,8 @@ namespace pcapcpp::protocol::packet {
 
 		mac				 receiver_hardware_address;
 		protocol_address receiver_protocol_address;
+
+	public:
+		arp() : operation((std::underlying_type_t<operation_code>)operation_code::malformed) { }
 	};
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include <pcapcpp/capture/protocol/arp.hpp>
+#include <pcapcpp/parse/protocol/arp.hpp>
 
 using namespace pcapcpp;
 using			arp_parser = parser_traits<protocol::arp_type>;
@@ -14,38 +14,19 @@ arp_parser::filter::filter(packet::mac src, packet::mac dst,
 	std::memcpy(__M_arp_destination_proto, dst, 4);
 }
 
-bool arp_parser::filter::match_source_hardware(packet::mac src)
+bool arp_parser::filter::operator==(packet& cmp)
 {
-	for (int i = 0; i < 6; i++)
-		if ((src[i] & __M_arp_source[i]) != src[i])
+	for (int i = 0; i < 6; i++) {
+		if ((cmp.receiver_hardware_address[i] & __M_arp_destination[i]) != cmp.receiver_hardware_address[i]
+		 || (cmp.sender_hardware_address  [i] & __M_arp_source     [i]) != cmp.sender_hardware_address  [i])
 			return false;
+	}
 
-	return true;
-}
-
-bool arp_parser::filter::match_destination_hardware(packet::mac dst)
-{
-	for (int i = 0; i < 6; i++)
-		if ((dst[i] & __M_arp_source[i]) != dst[i])
+	for (int i = 0; i < 4; i++) {
+		if ((cmp.receiver_protocol_address[i] & __M_arp_destination_proto[i]) != cmp.receiver_protocol_address[i]
+		 || (cmp.sender_protocol_address  [i] & __M_arp_source_proto     [i]) != cmp.sender_protocol_address  [i])
 			return false;
-
-	return true;
-}
-
-bool arp_parser::filter::match_source_protocol(packet::protocol_address src)
-{
-	for (int i = 0; i < 4; i++)
-		if ((src[i] & __M_arp_source[i]) != src[i])
-			return false;
-
-	return true;
-}
-
-bool arp_parser::filter::match_destination_protocol(packet::protocol_address dst)
-{
-	for (int i = 0; i < 4; i++)
-		if ((dst[i] & __M_arp_source[i]) != dst[i])
-			return false;
+	}
 
 	return true;
 }

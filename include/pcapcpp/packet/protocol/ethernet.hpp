@@ -12,5 +12,8 @@ namespace pcapcpp::protocol::packet {
 
 		mac			  source, destination;
 		protocol_type upper_protocol;
+
+	public:
+		ethernet() : upper_protocol(std::underlying_type_t<upper_layer>(upper_layer::malformed)) {  }
 	};
 }

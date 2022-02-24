@@ -1,4 +1,4 @@
-#include <pcapcpp/capture/protocol/v4.hpp>
+#include <pcapcpp/parse/protocol/v4.hpp>
 
 using namespace pcapcpp;
 using			v4_parser = parser_traits<protocol::ipv4_type>;
@@ -10,18 +10,13 @@ v4_parser::filter::filter(packet::address_type src, packet::address_type dst, pa
 	std::memcpy(__M_v4_destination, dst, 4);
 }
 
-bool v4_parser::filter::match_source	 (packet::address_type src)
+bool v4_parser::filter::operator==(packet& cmp)
 {
-	return (*reinterpret_cast<int*>(src) & *reinterpret_cast<int*>(__M_v4_source));
-}
+	for (int i = 0; i < 4; i++) {
+		if((cmp.source_address	   [i] & __M_v4_source	   [i]) != cmp.source_address	  [i]
+		|| (cmp.destination_address[i] & __M_v4_destination[i]) != cmp.destination_address[i])
+			return false;
+	}
 
-bool v4_parser::filter::match_destination(packet::address_type dst)
-{
-	return (*reinterpret_cast<int*>(dst) & *reinterpret_cast<int*>(__M_v4_destination));
-}
-
-bool v4_parser::filter::match_upper_layer(packet::protocol_type ulp)
-{
-	return (std::underlying_type_t<packet::upper_layer>)ulp
-		 & (std::underlying_type_t<packet::upper_layer>)__M_v4_ulp;
+	return true;
 }

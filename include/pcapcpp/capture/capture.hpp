@@ -1,64 +1,83 @@
 #pragma once
-#include <pcapcpp/capture/capture_helper.hpp>
+#include <pcapcpp/parse/parser.hpp>
+#include <pcapcpp/capture/index.hpp>
 #include <tuple>
 
 namespace pcapcpp {
+	template <typename... T>
+	class capture;
+
 	template <typename... CaptureProtocol>
 	class capture
 	{
+		template <typename... Protocol1, typename... Protocol2>
+		capture(capture<Protocol1...>&, capture<Protocol2...>&);
 	public:
-		template <typename T>
-		using index		 =    protocol_index_v<T, CaptureProtocol...>;
-		using this_type  =    capture<CaptureProtocol...>;
-		
-		using parser_set = std::tuple<basic_parser<CaptureProtocol>...>;
-		using filter_set = std::tuple<typename CaptureProtocol::filter...>;
-		using packet_set = std::tuple<typename basic_parser<CaptureProtocol>::packet...>;
+		template <typename Protocol>
+		using parser	   = basic_parser<Protocol>;
+		using parser_tuple = std::tuple<parser<CaptureProtocol>...>;
 
 	public:
-		class packet
-		{
-			template <typename ProtocolType>
-			using packet_t = basic_parser<ProtocolType>::packet&;
-
-			template <typename... PacketType>
-			packet(PacketType&&...);
-		public:
-			template <typename ProtocolType>
-			std::enable_if_t<index<ProtocolType> == -1>						    operator[](ProtocolType&&) {}
-			template <typename ProtocolType>
-			std::enable_if_t<index<ProtocolType> != -1, packet_t<ProtocolType>> operator[](ProtocolType&&)
-			{
-				return std::get<index<ProtocolType>>(__M_packet_set);
-			}
-
-		private:
-			packet_set __M_packet_set;
-		};
-		
-	public:
-		template <typename ProtocolType, typename FilterType>
-		std::enable_if_t<index<ProtocolType> != -1> set_filter(ProtocolType&&, FilterType&& filter)
-		{
-			std::get<protocol_index_v<ProtocolType, CaptureProtocol...>>(__M_cp_filter) = filter;
-		}
-
-		template <typename ProtocolType, typename FilterType>
-		std::enable_if_t<index<ProtocolType> == -1> set_filter(ProtocolType&&, FilterType&&) {  }
-
-	public:
-		packet operator()(raw&);
+		template <typename Protocol>
+		capture<Protocol, CaptureProtocol...>	 operator| (parser<Protocol>&);
+		template <typename... Protocol>
+		capture<Protocol..., CaptureProtocol...> operator| (capture<Protocol...>&);
+		void									 operator()(raw&);
 
 	private:
-		template <typename ExecuteProtocol, typename... Remaining>
-		void	   __M_cp_filter_execute(raw&);
-		template <typename ExecuteProcotol>
-		void	   __M_cp_filter_execute(raw&)
-		{
-			
-		}
-
-		parser_set __M_cp_parser;
-		filter_set __M_cp_filter;
+		parser_tuple __M_cp_parser;
 	};
+
+	template <>
+	class capture<>
+	{
+	public:
+		template <typename Protocol>
+		using parser = basic_parser<Protocol>;
+	public:
+		template <typename Protocol>
+		capture<Protocol>	 operator| (parser<Protocol>&);
+	};
+
+	template <typename... CaptureProtocol>
+	capture(CaptureProtocol&&...)->capture<CaptureProtocol...>;
+}
+
+template <typename... CaptureProtocol>
+template <typename Protocol>
+pcapcpp::capture<Protocol, CaptureProtocol...> pcapcpp::capture<CaptureProtocol...>::operator| (parser<Protocol>& parser)
+{
+	capture<Protcool, CaptureProtocol...> parser_capture;
+										  parser_capture.__M_cp_parser = std::tuple_cat(std::make_tuple(parser), __M_cp_parser);
+
+	return parser_capture;
+}
+
+template <typename... CaptureProtocol>
+template <typename... Protocol>
+pcapcpp::capture<Protocol..., CaptureProtocol...> pcapcpp::capture<CaptureProtocol...>::operator| (capture<Protocol...>& parser)
+{
+	
+}
+
+template <typename Protocol>
+pcapcpp::capture<Protocol>	  pcapcpp::capture<>::operator| (parser<Protocol>& psr)
+{
+	capture<Protocol> psr_capture;
+				      psr_capture.__M_cp_parser = psr;
+
+	return psr_capture;
+}
+
+template <typename... Protocol>
+void pcapcpp::capture<Protocol...>::operator()(raw& pkt_raw)
+{
+	raw::pointer pkt_pointer(pkt_raw);
+	
+	if constexpr (helper::index<protocol::ethernet_type, Protocol...> == -1)
+	{
+		auto ulp = parser_traits<protocol::ethernet_type>::upper_layer(pkt_raw);
+				
+	}
+		
 }

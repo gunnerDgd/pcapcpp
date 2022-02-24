@@ -13,69 +13,13 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\ethernet">
-      <UniqueIdentifier>{8f0ab073-405c-42b5-9d8b-ef9e12bcabf9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\arp">
-      <UniqueIdentifier>{c4d1a3cd-cba2-4b27-b720-524db5e8d1fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\protocol">
-      <UniqueIdentifier>{30c1de4d-7640-49c8-8a32-42ac674ac32b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\ip">
-      <UniqueIdentifier>{11365a0d-a115-4c10-bd72-9c6b1d617f57}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\filter">
-      <UniqueIdentifier>{6040ab66-c2ff-488a-a768-c1a6486b62f4}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\endpoint\endpoint.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\parser.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\forward.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\v4.hpp">
-      <Filter>Header Files\ip</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\ethernet.hpp">
-      <Filter>Header Files\ethernet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\protocol\arp.hpp">
-      <Filter>Header Files\arp</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\capture.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\capture_helper.hpp">
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\capture\index.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\source\endpoint\endpoint.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\source\capture\parse_arp.cpp">
-      <Filter>Source Files\protocol</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\source\capture\parse_ethernet.cpp">
-      <Filter>Source Files\protocol</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\source\capture\parse_v4.cpp">
-      <Filter>Source Files\protocol</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\source\capture\filter\filter_arp.cpp">
-      <Filter>Source Files\filter</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\source\capture\filter\filter_ethernet.cpp">
-      <Filter>Source Files\filter</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\source\capture\filter\filter_v4.cpp">
-      <Filter>Source Files\filter</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

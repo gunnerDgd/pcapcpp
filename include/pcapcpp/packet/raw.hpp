@@ -14,17 +14,16 @@
 namespace pcapcpp {
 	class raw
 	{
-		template <typename ParserProtocol, typename ParserTraits>
-		friend class basic_parser;
-		template <typename ParserProtocol>
-		friend class parser_traits;
-		friend class endpoint;
+		template <typename... Protocol>
+		class capture;
 	public:
-		typedef			 std::uint8_t* pointer_type;
-		typedef			 std::size_t   size_type   ;
+		class				  pointer;
+		typedef std::uint8_t* pointer_type;
+		typedef std::size_t   size_type   ;
 
 		raw ();
 		~raw();
+
 	private:
 		raw (pointer_type, size_type);
 	
@@ -40,8 +39,39 @@ namespace pcapcpp {
 		operator bool		 () { return !(__M_raw_pointer == nullptr); }
 
 	private:
-		pointer_type   __M_raw_pointer		 ;
-		size_type      __M_raw_packet_size	 ;
-		size_type      __M_raw_packet_pointer;
+		pointer_type   __M_raw_pointer	  ;
+		size_type      __M_raw_packet_size;
 	};
+
+	class raw::pointer
+	{
+		friend class raw;
+		pointer(raw&);
+	public:
+		template <typename ReadType>
+		ReadType& extract_from();
+		template <typename ReadType>
+		ReadType& view_from   ();
+
+	private:
+		pointer_type __M_raw_ptr;
+		size_type    __M_raw_size = 0, __M_raw_current = 0;
+	};
+}
+
+pcapcpp::raw::pointer::pointer(raw& pkt) : __M_raw_ptr (pkt.__M_raw_pointer),
+										   __M_raw_size(pkt.__M_raw_packet_size) {  }
+
+template <typename ReadType>
+ReadType& pcapcpp::raw::pointer::extract_from()
+{
+	ReadType& rd_context = *reinterpret_cast<ReadType*>(__M_raw_ptr + __M_raw_current);
+																	  __M_raw_current += sizeof(ReadType);
+	return    rd_context;
+}
+
+template <typename ReadType>
+ReadType& pcapcpp::raw::pointer::view_from()
+{
+	return *reinterpret_cast<ReadType*>(__M_raw_ptr + __M_raw_current);
 }

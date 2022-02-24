@@ -39,6 +39,9 @@ namespace pcapcpp::protocol::packet {
 
 		address_type  source_address;
 		address_type  destination_address;
+
+	public:
+		ipv4() : upper_protocol(std::underlying_type_t<upper_layer>(upper_layer::malformed)) {  }
 	};
 
 	static_assert(std::is_standard_layout_v<ipv4>, "[COMPILE ERROR] IPv4 Class is not standard layout.\n");
