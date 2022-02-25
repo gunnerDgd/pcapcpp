@@ -1,5 +1,6 @@
 #pragma once
 #include <type_traits>
+#include <variant>
 
 namespace pcapcpp::protocol {
 
@@ -11,7 +12,7 @@ namespace pcapcpp::protocol {
 	public:
 		using						  sizing = static_sized;
 		static constexpr std::size_t  size   = 14;
-		static constexpr std::uint8_t layer  = 2;
+		static constexpr std::uint8_t layer  = 0;
 	};
 
 	class arp_type
@@ -19,7 +20,7 @@ namespace pcapcpp::protocol {
 	public:
 		using						  sizing = static_sized;
 		static constexpr std::size_t  size   = 26;
-		static constexpr std::uint8_t layer  = 3;
+		static constexpr std::uint8_t layer  = 1;
 	};
 
 	class ipv4_type
@@ -27,7 +28,7 @@ namespace pcapcpp::protocol {
 	public:
 		using						  sizing = static_sized;
 		static constexpr std::size_t  size   = 16;
-		static constexpr std::uint8_t layer  = 3;
+		static constexpr std::uint8_t layer  = 1;
 	};
 
 	class tcp_type  
@@ -35,7 +36,7 @@ namespace pcapcpp::protocol {
 	public:
 		using						  sizing = static_sized;
 		static constexpr std::size_t  size   = 20;
-		static constexpr std::uint8_t layer  = 4;
+		static constexpr std::uint8_t layer  = 2;
 	};
 	
 	class udp_type  
@@ -43,7 +44,7 @@ namespace pcapcpp::protocol {
 	public:
 		using						  sizing = static_sized;
 		static constexpr std::size_t  size   = 8;
-		static constexpr std::uint8_t layer  = 4;
+		static constexpr std::uint8_t layer  = 2;
 	};
 
 	static constexpr arp_type	   arp;

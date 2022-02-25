@@ -16,9 +16,11 @@ namespace pcapcpp {
 		class filter;
 		
 	public:
-		static packet upper_layer(raw::pointer&);
-		static packet parse_from (null_filter, raw::pointer&);
-		static packet parse_from (filter&	 , raw::pointer&);
+		static upper_protocol upper_layer(raw::pointer&);
+		static upper_protocol upper_layer(packet& pkt)  { return (upper_protocol)pkt.upper_protocol; }
+
+		static packet		  parse_from (null_filter, raw::pointer&);
+		static packet		  parse_from (filter&	 , raw::pointer&);
 	};
 
 	class parser_traits<protocol::ethernet_type>::filter

@@ -53,7 +53,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -89,8 +89,10 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\ifstu\Projects\pcapcpp\include;C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Include;C:\Users\ifstu\Projects\pcapcpp\include;C:\Users\ifstu\Projects\pcapcpp\include;C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows;C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows;$(LibraryPath)</LibraryPath>
+    <OutDir>C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows\</OutDir>
+    <TargetName>x64_pcapcpp_packet</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -135,9 +137,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>

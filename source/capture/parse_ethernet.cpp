@@ -14,7 +14,7 @@ eth_parser::packet eth_parser::parse_from(filter& flt, raw::pointer& pkt)
 	return (flt == pkt_extract) ? packet(pkt_extract) : packet();
 }
 
-eth_parser::packet eth_parser::upper_layer(raw::pointer& pkt)
+eth_parser::upper_protocol eth_parser::upper_layer(raw::pointer& pkt)
 {
 	packet&						pkt_view = pkt.view_from<packet>();
 	return (packet::upper_layer)pkt_view.upper_protocol;

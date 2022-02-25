@@ -1,0 +1,11 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (x64_vs2022_pcapcpp_capture.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  parse_v4.cpp
+  endpoint.cpp
+  Generating Code...
+parse_v4.obj : warning LNK4006: "private: __cdecl pcapcpp::raw::pointer::pointer(class pcapcpp::raw &)" (??0pointer@raw@pcapcpp@@AEAA@AEAV12@@Z) already defined in endpoint.obj; second definition ignored
+parse_ethernet.obj : warning LNK4006: "private: __cdecl pcapcpp::raw::pointer::pointer(class pcapcpp::raw &)" (??0pointer@raw@pcapcpp@@AEAA@AEAV12@@Z) already defined in endpoint.obj; second definition ignored
+parse_arp.obj : warning LNK4006: "private: __cdecl pcapcpp::raw::pointer::pointer(class pcapcpp::raw &)" (??0pointer@raw@pcapcpp@@AEAA@AEAV12@@Z) already defined in endpoint.obj; second definition ignored
+filter_v4.obj : warning LNK4006: "private: __cdecl pcapcpp::raw::pointer::pointer(class pcapcpp::raw &)" (??0pointer@raw@pcapcpp@@AEAA@AEAV12@@Z) already defined in endpoint.obj; second definition ignored
+filter_ethernet.obj : warning LNK4006: "private: __cdecl pcapcpp::raw::pointer::pointer(class pcapcpp::raw &)" (??0pointer@raw@pcapcpp@@AEAA@AEAV12@@Z) already defined in endpoint.obj; second definition ignored
+filter_arp.obj : warning LNK4006: "private: __cdecl pcapcpp::raw::pointer::pointer(class pcapcpp::raw &)" (??0pointer@raw@pcapcpp@@AEAA@AEAV12@@Z) already defined in endpoint.obj; second definition ignored
+  x64_vs2022_pcapcpp_parse.vcxproj -> C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows\x64_pcapcpp_ep.lib

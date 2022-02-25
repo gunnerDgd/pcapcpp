@@ -19,10 +19,14 @@ namespace pcapcpp {
 
 		using packet			= protocol::packet::arp;
 		static constexpr bool	  notifies_upper_protocol = false;
+		using							   upper_protocol = void ;
 
 	public:
-		static packet parse_from(null_filter, raw::pointer&);
-		static packet parse_from(filter&	, raw::pointer&);
+		static void   upper_layer(raw::pointer&) {}
+		static void   upper_layer(packet&)       {}
+
+		static packet parse_from (null_filter, raw::pointer&);
+		static packet parse_from (filter&	 , raw::pointer&);
 	};
 
 	class parser_traits<protocol::arp_type>::filter

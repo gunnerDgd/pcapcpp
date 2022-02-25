@@ -15,7 +15,8 @@ namespace pcapcpp {
 	class raw
 	{
 		template <typename... Protocol>
-		class capture;
+		friend class capture;
+		friend class endpoint;
 	public:
 		class				  pointer;
 		typedef std::uint8_t* pointer_type;
@@ -36,7 +37,7 @@ namespace pcapcpp {
 		
 	public:
 		size_type packet_size() { return   __M_raw_packet_size		  ; }
-		operator bool		 () { return !(__M_raw_pointer == nullptr); }
+		operator  bool		 () { return !(__M_raw_pointer == nullptr); }
 
 	private:
 		pointer_type   __M_raw_pointer	  ;
@@ -45,7 +46,11 @@ namespace pcapcpp {
 
 	class raw::pointer
 	{
+		template <typename... T>
+		friend class capture;
+		friend class endpoint;
 		friend class raw;
+
 		pointer(raw&);
 	public:
 		template <typename ReadType>

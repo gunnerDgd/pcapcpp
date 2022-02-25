@@ -13,9 +13,3 @@ v4_parser::packet v4_parser::parse_from(filter& flt, raw::pointer& pkt)
 	packet&		   pkt_extract = pkt.extract_from<packet>();
 	return (flt == pkt_extract) ? packet(pkt_extract) : packet();
 }
-
-v4_parser::packet::upper_layer v4_parser::upper_layer(raw::pointer& ptr) 
-{ 
-	packet&						pkt_view = ptr.view_from<packet>();
-	return (packet::upper_layer)pkt_view.upper_protocol;
-}

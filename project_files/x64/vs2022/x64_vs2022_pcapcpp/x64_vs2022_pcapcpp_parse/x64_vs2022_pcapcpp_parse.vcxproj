@@ -95,10 +95,10 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\ifstu\Projects\pcapcpp\include;C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\include;C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Include;C:\Users\ifstu\Projects\pcapcpp\include;C:\Users\ifstu\Projects\pcapcpp\include;C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\include;C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Include;$(IncludePath)</IncludePath>
     <OutDir>C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows\</OutDir>
     <TargetName>x64_pcapcpp_ep</TargetName>
-    <LibraryPath>C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows;C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -145,7 +145,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
