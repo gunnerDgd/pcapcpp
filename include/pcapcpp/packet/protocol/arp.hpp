@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint>
+#include <iostream>
 
 namespace pcapcpp::protocol::packet {
 	class arp
@@ -21,5 +22,8 @@ namespace pcapcpp::protocol::packet {
 
 	public:
 		arp() : operation((std::underlying_type_t<operation_code>)operation_code::malformed) { }
+		operator bool()																		 { return operation != (std::underlying_type_t<operation_code>)operation_code::malformed; }
 	};
 }
+
+std::ostream& operator<< (std::ostream& os, const pcapcpp::protocol::packet::arp& pkt);

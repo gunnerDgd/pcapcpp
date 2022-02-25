@@ -2,6 +2,8 @@
 #include <cstdint>
 #include <type_traits>
 
+#include <iostream>
+
 namespace pcapcpp::protocol::packet {
 	class ipv4
 	{
@@ -14,15 +16,15 @@ namespace pcapcpp::protocol::packet {
 		{
 			malformed = 0xFF,
 
-			icmp = 0x01,
-			igmp = 0x02,
+			icmp      = 0x01,
+			igmp	  = 0x02,
 
-			tcp  = 0x06,
-			udp  = 0x11
+			tcp		  = 0x06,
+			udp		  = 0x11
 		};
 
-		std::uint8_t  version			 : 4;
 		std::uint8_t  header_length		 : 4;
+		std::uint8_t  version			 : 4;
 
 		std::uint8_t  type_of_service    : 6;
 		std::uint8_t  notifty_congestion : 2;
@@ -44,5 +46,7 @@ namespace pcapcpp::protocol::packet {
 		ipv4() : upper_protocol(std::underlying_type_t<upper_layer>(upper_layer::malformed)) {  }
 	};
 
-	static_assert(std::is_standard_layout_v<ipv4>, "[COMPILE ERROR] IPv4 Class is not standard layout.\n");
+	static_assert(std::is_standard_layout_v<ipv4> || sizeof(ipv4) != 20, "[COMPILE ERROR] IPv4 Class is not standard layout.\n");
 }
+
+std::ostream& operator<< (std::ostream& os, const pcapcpp::protocol::packet::ipv4& pkt);

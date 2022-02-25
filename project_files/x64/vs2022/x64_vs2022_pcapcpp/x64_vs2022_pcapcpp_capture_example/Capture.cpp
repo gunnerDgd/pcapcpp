@@ -5,6 +5,7 @@
 #include <pcapcpp/interface/enumerator.hpp>
 
 #include <iostream>
+#include <WinSock2.h>
 
 int main()
 {
@@ -15,12 +16,16 @@ int main()
 	pcapcpp::device				  CaptureDevice  (CaptureInterface, pcapcpp::device::operation_mode{});
 	pcapcpp::endpoint			  CaptureEndpoint(CaptureDevice);
 
-	pcapcpp::raw				  CaptureRaw;
-	CaptureEndpoint.capture_once (CaptureRaw);
+	for (int i = 0; i < CaptureInterfaceEnumerator.count(); i++)
+		std::cout << CaptureInterfaceEnumerator[i].description() << std::endl;
 
-	auto CaptureParsed = Capture(CaptureRaw);
-	for (int i = 0; i < 4; i++)
-		std::cout << std::hex << (unsigned short)CaptureParsed[pcapcpp::protocol::v4].destination_address[i] << " ";
-
-	std::cout << std::endl;
+	while (true)
+	{
+		pcapcpp::raw					   CaptureRaw;
+		decltype(Capture)::captured_packet CapturePacket;
+		
+		CaptureEndpoint.capture_once(CaptureRaw);
+		if (Capture(CaptureRaw, CapturePacket))
+			std::cout << CapturePacket[pcapcpp::protocol::v4] << std::endl;
+	}
 }

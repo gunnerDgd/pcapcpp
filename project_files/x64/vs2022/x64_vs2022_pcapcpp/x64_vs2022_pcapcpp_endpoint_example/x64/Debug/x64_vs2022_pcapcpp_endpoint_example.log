@@ -1,9 +1,3 @@
 ﻿  endpoint_example.cpp
-C:\Users\ifstu\Projects\pcapcpp\include\pcapcpp\endpoint\endpoint.hpp(36,29): error C2248: 'pcapcpp::raw::raw': cannot access private member declared in class 'pcapcpp::raw'
-C:\Users\ifstu\Projects\pcapcpp\include\pcapcpp\packet\raw.hpp(28): message : see declaration of 'pcapcpp::raw::raw'
-C:\Users\ifstu\Projects\pcapcpp\include\pcapcpp\packet\raw.hpp(15): message : see declaration of 'pcapcpp::raw'
-C:\Users\ifstu\Projects\pcapcpp\project_files\x64\vs2022\x64_vs2022_pcapcpp\x64_vs2022_pcapcpp_endpoint_example\endpoint_example.cpp(22): message : see reference to function template instantiation 'bool pcapcpp::endpoint::capture_once<pcapcpp::raw&>(RawType)' being compiled
-          with
-          [
-              RawType=pcapcpp::raw &
-          ]
+LINK : fatal error LNK1104: cannot open file 'x64_pcapcpp_ep.lib'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppCommon.targets(1074,5): error MSB6006: "link.exe" exited with code 1104.

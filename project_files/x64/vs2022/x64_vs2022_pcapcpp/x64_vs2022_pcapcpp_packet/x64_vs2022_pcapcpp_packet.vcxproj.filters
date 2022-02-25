@@ -41,5 +41,8 @@
     <ClCompile Include="..\..\..\..\..\source\packet\raw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\source\packet\ostream_operator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

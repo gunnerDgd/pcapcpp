@@ -29,9 +29,8 @@ template <typename RawType>
 bool pcapcpp::endpoint::capture_once(RawType&& raw)
 {
 	endpoint_header	ep_hdr;
-	std::uint8_t*   ep_raw = (std::uint8_t*)pcap_next(__M_ep_device.__M_if_device_handle, &ep_hdr);
-
-	if (!ep_raw) return false;
+	std::uint8_t*   ep_raw; 
+	while	     (!(ep_raw = (std::uint8_t*)pcap_next(__M_ep_device.__M_if_device_handle, &ep_hdr)));
 	
 	raw = std::decay_t<RawType>(ep_raw, (std::size_t)ep_hdr.caplen);
 	return true;

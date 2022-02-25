@@ -33,12 +33,12 @@ namespace pcapcpp {
 	public:
 		template <typename ProtocolType>
 		parser_type<ProtocolType>&				 operator[](ProtocolType);
-		captured_packet							 operator()(raw&);
+		bool									 operator()(raw&, captured_packet&);
 	private:
 		template <typename ProtocolType, typename NextProtocol, typename... Remaining>
-		void				 __M_cp_parser_execute   (captured_packet&, raw::pointer&);
+		bool				 __M_cp_parser_execute(captured_packet&, raw::pointer&);
 		template <typename ProtocolType>
-		void				 __M_cp_parser_execute   (captured_packet&, raw::pointer&);
+		bool				 __M_cp_parser_execute(captured_packet&, raw::pointer&);
 
 		parser::layer_parser __M_cp_parser;
 	};
@@ -51,7 +51,7 @@ namespace pcapcpp {
 		using parser = basic_parser<Protocol>;
 	public:
 		template <typename Protocol>
-		capture<Protocol>	 operator| (parser<Protocol>&);
+		capture<Protocol> operator| (parser<Protocol>&);
 	};
 
 	template <typename... CaptureProtocol>
@@ -59,10 +59,10 @@ namespace pcapcpp {
 	{
 		friend class capture<CaptureProtocol...>;
 		template <typename Protocol, typename PacketType>
-		void									 set_packet(Protocol, PacketType&&);
+		void									set_packet(Protocol, PacketType&&);
 	public:
 		template <typename Protocol>
-		typename basic_parser<Protocol>::packet& operator[](Protocol);
+		typename basic_parser<Protocol>::packet operator[](Protocol);
 
 	private:
 		parser::layer_packet __M_cp_packet;
@@ -74,7 +74,7 @@ pcapcpp::capture<CaptureProtocol...>::capture() {  }
 
 template <typename... CaptureProtocol>
 template <typename ProtocolType, typename NextProtocol, typename... Remaining>
-void pcapcpp::capture<CaptureProtocol...>::__M_cp_parser_execute(captured_packet& cp_pkt, raw::pointer& raw_ptr)
+bool pcapcpp::capture<CaptureProtocol...>::__M_cp_parser_execute(captured_packet& cp_pkt, raw::pointer& raw_ptr)
 {
 	auto parser_protocol = ProtocolType{};
 	auto parser_var      = std::get<ProtocolType::layer>	  (__M_cp_parser);
@@ -86,23 +86,27 @@ void pcapcpp::capture<CaptureProtocol...>::__M_cp_parser_execute(captured_packet
 		cp_pkt.set_packet(parser_protocol, parser_proto.parse_from (raw_ptr));
 
 		if (!parser::is_upper_layer<NextProtocol>(ulp))
-			return;
+			return false;
 		else
-			__M_cp_parser_execute<NextProtocol, Remaining...>(cp_pkt, raw_ptr);
+			return __M_cp_parser_execute<NextProtocol, Remaining...>(cp_pkt, raw_ptr);
 	}
 	else
+	{
 		cp_pkt.set_packet(parser_protocol, parser_proto.parse_from(raw_ptr));
+		return true;
+	}
 }
 
 template <typename... CaptureProtocol>
 template <typename ProtocolType>
-void pcapcpp::capture<CaptureProtocol...>::__M_cp_parser_execute(captured_packet& cp_pkt, raw::pointer& raw_ptr)
+bool pcapcpp::capture<CaptureProtocol...>::__M_cp_parser_execute(captured_packet& cp_pkt, raw::pointer& raw_ptr)
 {
 	auto parser_protocol    = ProtocolType{};
 	auto parser_var         = std::get<ProtocolType::layer>		 (__M_cp_parser);
 	auto parser_proto	    = std::get<parser_type<ProtocolType>>(parser_var)   ;
 	
 	cp_pkt.set_packet(parser_protocol, parser_proto.parse_from(raw_ptr));
+	return true;
 }
 
 template <typename... CaptureProtocol>
@@ -137,21 +141,22 @@ pcapcpp::capture<Protocol>	  pcapcpp::capture<>::operator| (parser<Protocol>& ps
 }
 
 template <typename... CaptureProtocol>
-typename pcapcpp::capture<CaptureProtocol...>::captured_packet pcapcpp::capture<CaptureProtocol...>::operator()(raw& pkt_raw)
+bool pcapcpp::capture<CaptureProtocol...>::operator()(raw& pkt_raw, captured_packet& pkt_capture)
 {
-	captured_packet cp_packet;
-	raw::pointer	cp_raw_pointer(pkt_raw);
-
-	__M_cp_parser_execute<CaptureProtocol...>(cp_packet, cp_raw_pointer);
-	return									  cp_packet;
+	raw::pointer												  cp_raw_pointer(pkt_raw);
+	return __M_cp_parser_execute<CaptureProtocol...>(pkt_capture, cp_raw_pointer);
 }
 
 template <typename... CaptureProtocol>
 template <typename Protocol>
-typename pcapcpp::basic_parser<Protocol>::packet& pcapcpp::capture<CaptureProtocol...>::captured_packet::operator[](Protocol)
+typename pcapcpp::basic_parser<Protocol>::packet pcapcpp::capture<CaptureProtocol...>::captured_packet::operator[](Protocol)
 {
-	auto parser_var = std::get<Protocol::layer>				  (__M_cp_packet);
-	return			  std::get<basic_parser<Protocol>::packet>(parser_var);
+	auto		parser_var = std::get<Protocol::layer>(__M_cp_packet);
+	std::size_t proto_idx  = helper::index<Protocol, CaptureProtocol...>::value;
+
+	return (proto_idx == parser_var.index() && parser_var.index() != std::variant_npos)
+		  ? std::get<basic_parser<Protocol>::packet>(parser_var)
+		  :			 basic_parser<Protocol>::packet ();
 }
 
 template <typename... CaptureProtocol>

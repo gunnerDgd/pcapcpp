@@ -27,6 +27,7 @@
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\packet\raw.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\source\packet\ostream_operator.cpp" />
     <ClCompile Include="..\..\..\..\..\source\packet\raw.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

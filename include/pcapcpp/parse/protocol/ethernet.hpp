@@ -17,7 +17,7 @@ namespace pcapcpp {
 		
 	public:
 		static upper_protocol upper_layer(raw::pointer&);
-		static upper_protocol upper_layer(packet& pkt)  { return (upper_protocol)pkt.upper_protocol; }
+		static upper_protocol upper_layer(packet& pkt)  ;
 
 		static packet		  parse_from (null_filter, raw::pointer&);
 		static packet		  parse_from (filter&	 , raw::pointer&);
