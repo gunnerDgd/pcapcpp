@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\include\pcapcpp\endpoint\endpoint.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\parse\forward.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\parse\parser.hpp" />
     <ClInclude Include="..\..\..\..\..\include\pcapcpp\parse\protocol\arp.hpp" />
@@ -97,7 +98,7 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Include;C:\Users\ifstu\Projects\pcapcpp\include;C:\Users\ifstu\Projects\pcapcpp\include;C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Include;C:\Users\MinusOne\Projects\pcapcpp\include;C:\Users\MinusOne\Projects\pcapcpp\external_library\npcap\Include;$(IncludePath)</IncludePath>
     <OutDir>C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows\</OutDir>
-    <TargetName>x64_pcapcpp_ep</TargetName>
+    <TargetName>x64_pcapcpp_parse</TargetName>
     <LibraryPath>C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows;C:\Users\ifstu\Projects\pcapcpp\external_library\npcap\Lib\x64;C:\Users\ifstu\Projects\pcapcpp\libs\x64\windows;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

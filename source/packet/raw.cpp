@@ -30,6 +30,9 @@ pcapcpp::raw& pcapcpp::raw::operator=(raw&& move)
 	return *this;
 }
 
-pcapcpp::raw::raw() : __M_raw_pointer(nullptr),
-					  __M_raw_packet_size(0)  {  }
-pcapcpp::raw::~raw()						  { if (__M_raw_pointer) delete[] __M_raw_pointer; }
+pcapcpp::raw::pointer::pointer(raw& pkt) : __M_raw_ptr (pkt.__M_raw_pointer),
+										   __M_raw_size(pkt.__M_raw_packet_size) {  }
+
+pcapcpp::raw::raw()						 : __M_raw_pointer(nullptr),
+										   __M_raw_packet_size(0)  {  }
+pcapcpp::raw::~raw()											   { if (__M_raw_pointer) delete[] __M_raw_pointer; }

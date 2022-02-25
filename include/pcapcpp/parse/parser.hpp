@@ -35,8 +35,8 @@ namespace pcapcpp {
 		upper_protocol upper_layer(raw::pointer& ptr) { return traits_type::upper_layer(ptr); }
 		upper_protocol upper_layer(packet& pkt)       { return traits_type::upper_layer(pkt); }
 		
-		packet		   parse_from (raw::pointer& pkt) { return (__M_parse_filter) ? traits_type::parse_from (__M_parse_filter, pkt) 
-																				  : traits_type::parse_from (no_filter       , pkt); }
+		packet		   parse_from (raw::pointer& pkt) { return (__M_parse_filter) ? traits_type::parse_from (*__M_parse_filter, pkt) 
+																				  : traits_type::parse_from (no_filter        , pkt); }
 
 	private:
 		filter_option __M_parse_filter;

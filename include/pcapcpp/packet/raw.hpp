@@ -64,9 +64,6 @@ namespace pcapcpp {
 	};
 }
 
-pcapcpp::raw::pointer::pointer(raw& pkt) : __M_raw_ptr (pkt.__M_raw_pointer),
-										   __M_raw_size(pkt.__M_raw_packet_size) {  }
-
 template <typename ReadType>
 ReadType& pcapcpp::raw::pointer::extract_from()
 {
