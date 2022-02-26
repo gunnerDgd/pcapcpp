@@ -1,0 +1,7 @@
+project_files/
+external_library/npcap/docs
+*.exe
+*.obj
+*.idb
+*.pdb
+*.ilk
