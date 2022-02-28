@@ -1,11 +1,9 @@
 #pragma once
-#include <pcapcpp/packet/category.hpp>
+#include <pcapcpp/packet/protocol.hpp>
+#include <pcapcpp/packet/protocol_traits.hpp>
+
 #include <pcapcpp/packet/raw.hpp>
-
 #include <optional>
-
-using pcapcpp::protocol::static_sized;
-using pcapcpp::protocol::dynamic_sized;
 
 namespace pcapcpp {
 	class			 null_filter	    {};
